@@ -1,0 +1,48 @@
+/*Application CSS */
+/*****MAIN*****/
+.container {
+  max-width: 600px;
+}
+
+.banner {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.product-name {
+  margin-top: 5px;
+  font-size: 28px;
+  font-family: 'Century Gothic';
+}
+
+.thumbs {
+  margin-top: 20px;
+}
+
+.thumbnail {
+  max-width: 75px;
+  margin: 0px 2px;
+}
+
+/*****FORM*****/
+/*Invalid and dirty change the border to red */
+.ng-invalid.ng-dirty {
+  border-color: tomato;
+}
+
+.ng-valid.ng-dirty {
+  border-color: lightseagreen;
+}
+
+/*****BOOTSTRAP OVERRIDE*****/
+.nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
+  background-color: #9E1F64;
+}
+
+a {
+  color: #9E1F64;
+}
+
+a:hover {
+  color: #333;
+}
