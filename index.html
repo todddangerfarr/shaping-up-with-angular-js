@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html ng-app="gemStore">
+  <head>
+    <link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css" />
+    <script type="text/javascript" src="static/js/angular.min.js"></script>
+    <script type="text/javascript" src="static/js/app.js"></script>
+  </head>
+  <body ng-controller="StoreController as store" class="container">
+    <header>
+      <h1 class="text-center">Flatlander Crafted Gems</h1>
+      <h2 class="text-center">- an Angular store -</h2>
+    </header>
+    <!--  Products Container  -->
+    <div class="list-group">
+      <!--  Product Container  -->
+      <div class="list-group-item" ng-repeat="product in store.products">
+        <h3>
+          {{product.name}}
+          <em class="pull-right">{{product.price | currency}}</em>
+        </h3>
+
+        <!-- Image Gallery  -->
+        <div class="gallery" ng-show="product.images.length" ng-controller="GalleryController as gallery">
+          <img class="img img-circle img-thumbnail center-block" ng-src="{{product.images[gallery.current]}}" />
+          <ul class="list-inline thumbs">
+            <li class="thumbnail" ng-repeat="image in product.images">
+              <img ng-src="{{image}}" />
+            </li>
+          </ul>
+        </div>
+
+        <section ng-controller="PanelController as panel">
+          <ul class="nav nav-pills" >
+            <li ng-class="{ active:panel.isSelected(1)}">
+              <a href ng-click="panel.selectTab(1)">Description</a>
+            </li>
+            <li ng-class="{ active:panel.isSelected(2)}">
+              <a href ng-click="panel.selectTab(2)">Specifications</a>
+            </li>
+            <li ng-class="{ active:panel.isSelected(3)}">
+              <a href ng-click="panel.selectTab(3)">Reviews</a>
+            </li>
+          </ul>
+          <div class="panel" ng-show="panel.isSelected(1)">
+            <h4>Description</h4>
+            <blockquote>{{ product.description }}</blockquote>
+          </div>
+          <div class="panel" ng-show="panel.isSelected(2)">
+            <h4>Specification</h4>
+            <blockquote>Shine: {{product.shine}} </blockquote>
+          </div>
+          <div class="panel" ng-show="panel.isSelected(3)">
+            <h4>Reviews</h4>
+            <p>None Yet</p>
+          </div>
+        </section>
+
+      </div>
+    </div>
+
+  </body>
+</html>
